@@ -1,0 +1,58 @@
+---
+name: Joshua Hermosada
+date: 09-20-2026
+output: pdf_document
+---
+
+Assessment Item 1
+
+```{r}
+#Set the probability of success
+p <- 0.2
+
+#Generate 1000 random variables from the geometric distribution
+observe <- 1000
+result <- rgeom(n = observe, prob = p)
+
+#Basic statistics
+mean_x <- mean(result)
+var_x <- var(result)
+sd_x <- sd(result)
+
+#Print the results
+cat("• Number of trials required to achieve first success:\n")
+cat(sprintf("• Mean (in 2 decimal places): %.2f\n", mean_x))
+cat(sprintf("• Variance (in 2 decimal places): %.2f\n", var_x))
+cat(sprintf("• Standard deviation (in 2 decimal places): %.2f\n", sd_x))
+
+#Plot the histogram of the results
+hist(result, 
+     breaks = seq(-0.5, max(result) + 0.5, by = 1),
+     col = "skyblue", 
+     border = "white",
+     main = "Histogram of Geometric Distribution",
+     xlab = "Number of Failures Before First Success",
+     ylab = "Frequency")
+```
+Assessment Item 2
+Consider a plant manufacturing IC chips of which 10% are expected to be defective. The
+chips are packed in boxes for export. Before transportation, a sample is drawn from each
+box.
+```{r}
+# sample of 10 is selected from a box of 40
+N1 <- 40
+m1 <- N1 * 0.10  # 4 defective chips
+n1 <- N1 - m1    # 36 good chips
+k1 <- 10         # sample size
+
+# P(X > 1) = 1 - P(X <= 1)
+prob_box_40 <- phyper(q = 1, m = m1, n = n1, k = k1, lower.tail = FALSE)
+
+# sample of 10 is selected from a box of 5000.
+N2 <- 5000
+m2 <- N2 * 0.10  # 500 defective chips
+n2 <- N2 - m2    # 4500 good chips
+k2 <- 10         # sample size
+
+prob_box_5000 <- phyper(q = 1, m = m2, n = n2, k = k2, lower.tail = FALSE)
+```
