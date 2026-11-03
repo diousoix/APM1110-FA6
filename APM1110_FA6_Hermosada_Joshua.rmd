@@ -56,3 +56,4 @@ k2 <- 10         # sample size
 
 prob_box_5000 <- phyper(q = 1, m = m2, n = n2, k = k2, lower.tail = FALSE)
 ```
+
